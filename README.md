@@ -46,4 +46,4 @@ the vector.
 
 ### Example
 
-See: http://jrideout.github.io/histogram-pretty
+[Iris Example](http://jrideout.github.io/histogram-pretty)

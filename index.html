@@ -3,12 +3,13 @@
 <head>
     <title>histogram-pretty.js</title>
     <meta http-equiv="content-type" content="text/html; charset=UTF8">
+    <link rel="stylesheet" type="text/css" href="http://bootswatch.com/simplex/bootstrap.min.css"/>
     <link rel="stylesheet" type="text/css" href="http://nickqizhu.github.io/dc.js/css/dc.css"/>
 </head>
 <body>
-    <div id="readme"></div>
-    <h1>Histogram Pretty Example</h1>
-    <p>Dataset: <a href="https://en.wikipedia.org/wiki/Iris_flower_data_set">Iris</a></p>
+    <div class="container" id="readme"></div>
+    <div class="container" id="example"></div>
+    <footer class="container">Dataset Source: <a href="https://en.wikipedia.org/wiki/Iris_flower_data_set">Iris</a></footer>
     <script src="http://nickqizhu.github.io/dc.js/js/crossfilter.js" type="text/javascript"></script>
     <script src="http://nickqizhu.github.io/dc.js/js/d3.js" type="text/javascript"></script>
     <script src="http://nickqizhu.github.io/dc.js/js/dc.js" type="text/javascript"></script>
@@ -40,7 +41,7 @@ d3.csv('iris.csv',
         buckets     = groups[n].size(),
         ticks       = d3.range.apply(d3,hist.tickRange(8));
 
-        d3.select("body").append("div").attr("id", n);
+        d3.select("#example").append("div").attr("id", n);
         dc.barChart("#" + n)
             .dimension(dims[n]).group(groups[n])
             .width(250).height(225)
@@ -55,7 +56,7 @@ d3.csv('iris.csv',
     dims.class = ndx.dimension(dc.pluck('class'));
     groups.class = dims.class.group();
 
-    d3.select("body").append("div").attr("id", 'class');
+    d3.select("#example").append("div").attr("id", 'class');
     dc.rowChart("#class")
         .width(500).height(225)
         .dimension(dims.class)
@@ -67,8 +68,8 @@ d3.csv('iris.csv',
 });
 
 d3.xhr('README.md','text/plain',function(err,r) {
-  var html = marked(r.responseText);
-  d3.select("#readme").html(html);
+  var readmeHtml = marked(r.responseText);
+  d3.select("#readme").html(readmeHtml);
 });
 
     </script>
