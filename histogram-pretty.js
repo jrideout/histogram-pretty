@@ -8,6 +8,8 @@ histogram = function(vector,options) {
   if (options.copy) s = s.slice();
   s.sort(function (a, b) { return a - b; });
 
+  // TODO: use http://www.austinrochford.com/posts/2013-10-28-median-of-medians.html
+  // without sorting
   function quantile(p) {
     var idx = 1 + (s.length - 1) * p,
         lo = Math.floor(idx),
